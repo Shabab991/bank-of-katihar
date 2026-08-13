@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Profile — Bank of Katihar{% endblock %}
+{% block content %}
+<section class="dashboard">
+  <p class="eyebrow">Account details</p>
+  <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+
+  <div class="profile-grid">
+    <div class="profile-item"><span>Account number</span><strong>{{ user.account_number }}</strong></div>
+    <div class="profile-item"><span>Account type</span><strong>{{ user.account_type }}</strong></div>
+    <div class="profile-item"><span>Username</span><strong>{{ user.username }}</strong></div>
+    <div class="profile-item"><span>Phone</span><strong>{{ user.phone_number or "—" }}</strong></div>
+    <div class="profile-item"><span>Date of birth</span><strong>{{ user.dob or "—" }}</strong></div>
+    <div class="profile-item"><span>Father's name</span><strong>{{ user.father_name or "—" }}</strong></div>
+    <div class="profile-item"><span>Mother's name</span><strong>{{ user.mother_name or "—" }}</strong></div>
+    <div class="profile-item span-2"><span>Address</span><strong>{{ user.address or "—" }}</strong></div>
+    <div class="profile-item"><span>Member since</span><strong>{{ user.created_at[:10] }}</strong></div>
+  </div>
+
+  <p class="auth-switch"><a href="{{ url_for('dashboard') }}">&larr; Back to dashboard</a></p>
+</section>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — Bank of Katihar{% endblock %}
+{% block content %}
+<section class="dashboard">
+  <div class="dash-header">
+    <div>
+      <p class="eyebrow">Welcome back</p>
+      <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+      <p class="account-number">{{ user.account_number }}</p>
+    </div>
+    <div class="balance-card">
+      <span>Available balance</span>
+      <strong>₹{{ "%.2f"|format(user.balance) }}</strong>
+    </div>
+  </div>
+
+  <div class="quick-actions">
+    <a href="{{ url_for('transfer') }}" class="btn btn-primary">Send money</a>
+    <a href="{{ url_for('profile') }}" class="btn btn-ghost">View profile</a>
+  </div>
+
+  <div class="motif-strip motif-strip-inline" aria-hidden="true"></div>
+
+  <h2 class="section-title">Recent transactions</h2>
+  {% if transactions %}
+  <table class="tx-table">
+    <thead>
+      <tr><th>Date</th><th>From</th><th>To</th><th>Note</th><th class="tx-amount-col">Amount</th></tr>
+    </thead>
+    <tbody>
+      {% for tx in transactions %}
+      <tr>
+        <td>{{ tx.created_at[:10] }}</td>
+        <td>{{ tx.from_username }}</td>
+        <td>{{ tx.to_username }}</td>
+        <td>{{ tx.note or "—" }}</td>
+        <td class="tx-amount-col {{ 'tx-out' if tx.from_username == user.username else 'tx-in' }}">
+          {{ "-" if tx.from_username == user.username else "+" }}₹{{ "%.2f"|format(tx.amount) }}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="empty-state">No transactions yet — send money to see it show up here.</p>
+  {% endif %}
+</section>
+{% endblock %}

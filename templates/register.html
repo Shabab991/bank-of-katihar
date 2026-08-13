@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Open an account — Bank of Katihar{% endblock %}
+{% block content %}
+<section class="auth-section">
+  <div class="auth-card auth-card-wide">
+    <p class="eyebrow">Takes about a minute</p>
+    <h1>Open an account</h1>
+    <form method="POST" action="{{ url_for('register') }}" class="form form-grid">
+      <label>First name
+        <input type="text" name="first_name" value="{{ form.first_name if form else '' }}" required>
+      </label>
+      <label>Last name
+        <input type="text" name="last_name" value="{{ form.last_name if form else '' }}" required>
+      </label>
+      <label>Father's name
+        <input type="text" name="father_name" value="{{ form.father_name if form else '' }}">
+      </label>
+      <label>Mother's name
+        <input type="text" name="mother_name" value="{{ form.mother_name if form else '' }}">
+      </label>
+      <label class="span-2">Address
+        <input type="text" name="address" value="{{ form.address if form else '' }}">
+      </label>
+      <label>Account type
+        <select name="account_type" required>
+          <option value="">Select...</option>
+          <option value="Savings">Savings</option>
+          <option value="Current">Current</option>
+        </select>
+      </label>
+      <label>Date of birth
+        <input type="date" name="dob" value="{{ form.dob if form else '' }}">
+      </label>
+      <label>Aadhaar number
+        <input type="text" name="aadhar_number" value="{{ form.aadhar_number if form else '' }}" pattern="[0-9]*" inputmode="numeric">
+      </label>
+      <label>Phone number
+        <input type="tel" name="phone_number" value="{{ form.phone_number if form else '' }}">
+      </label>
+
+      <div class="span-2 form-divider"></div>
+
+      <label>Username
+        <input type="text" name="username" value="{{ form.username if form else '' }}" required autocomplete="username">
+      </label>
+      <label>Password
+        <input type="password" name="password" required minlength="6" autocomplete="new-password">
+      </label>
+      <label class="span-2">Confirm password
+        <input type="password" name="confirm_password" required minlength="6" autocomplete="new-password">
+      </label>
+
+      <button type="submit" class="btn btn-primary btn-block span-2">Create account</button>
+    </form>
+    <p class="auth-switch">Already have an account? <a href="{{ url_for('login') }}">Sign in</a></p>
+  </div>
+</section>
+{% endblock %}

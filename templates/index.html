@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Bank of Katihar — Banking, rooted{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">Est. in code, serving Katihar</p>
+    <h1>Banking that keeps<br>its ledger honest.</h1>
+    <p class="hero-sub">
+      Open an account, check your balance, and send money to anyone
+      else at Bank of Katihar — all recorded, all yours to see.
+    </p>
+    <div class="hero-actions">
+      <a href="{{ url_for('register') }}" class="btn btn-primary">Open an account</a>
+      <a href="{{ url_for('login') }}" class="btn btn-ghost">Sign in</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <div class="passbook">
+      <div class="passbook-row"><span>Account holder</span><strong>Your name here</strong></div>
+      <div class="passbook-row"><span>Account no.</span><strong>BOK00000001</strong></div>
+      <div class="passbook-row"><span>Balance</span><strong>₹1,000.00</strong></div>
+      <div class="passbook-divider"></div>
+      <p class="passbook-note">Every new account opens with a ₹1,000 welcome balance.</p>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature">
+    <span class="feature-num">01</span>
+    <h3>Open in a minute</h3>
+    <p>Register with your details and get an account number instantly — no branch visit.</p>
+  </div>
+  <div class="feature">
+    <span class="feature-num">02</span>
+    <h3>Send money</h3>
+    <p>Transfer to any Bank of Katihar account using their account number.</p>
+  </div>
+  <div class="feature">
+    <span class="feature-num">03</span>
+    <h3>See everything</h3>
+    <p>Every transaction is logged and visible on your dashboard, in order.</p>
+  </div>
+</section>
+{% endblock %}

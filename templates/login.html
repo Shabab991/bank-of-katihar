@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Sign in — Bank of Katihar{% endblock %}
+{% block content %}
+<section class="auth-section">
+  <div class="auth-card">
+    <p class="eyebrow">Welcome back</p>
+    <h1>Sign in</h1>
+    <form method="POST" action="{{ url_for('login') }}" class="form">
+      <label>Username
+        <input type="text" name="username" required autofocus autocomplete="username">
+      </label>
+      <label>Password
+        <input type="password" name="password" required autocomplete="current-password">
+      </label>
+      <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+    </form>
+    <p class="auth-switch">New here? <a href="{{ url_for('register') }}">Open an account</a></p>
+  </div>
+</section>
+{% endblock %}
